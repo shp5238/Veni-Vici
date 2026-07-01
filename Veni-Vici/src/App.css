@@ -1,0 +1,299 @@
+.app-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.app-header {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--olive);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text);
+}
+
+.discover-button {
+  min-width: 190px;
+  border: 2px solid var(--gold-dark);
+  border-radius: 999px;
+  padding: 14px 24px;
+  color: #332400;
+  background: var(--gold);
+  box-shadow: 0 8px 0 var(--gold-dark);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.discover-button:hover:not(:disabled) {
+  background: #f0c45a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 var(--gold-dark);
+}
+
+.discover-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.results-panel,
+.ban-panel {
+  border: 1px solid var(--sage-border);
+  border-radius: 22px;
+  background: var(--sage);
+  box-shadow: var(--shadow);
+}
+
+.results-panel {
+  min-height: 520px;
+  padding: 24px;
+}
+
+.ban-panel {
+  padding: 22px;
+}
+
+.results-panel h2,
+.ban-panel h2 {
+  margin: 0 0 18px;
+}
+
+.bird-card {
+  overflow: hidden;
+  border: 1px solid var(--sage-border);
+  border-radius: 20px;
+  background: var(--panel);
+}
+
+.bird-image {
+  display: block;
+  width: 100%;
+  height: min(58vw, 520px);
+  min-height: 360px;
+  object-fit: cover;
+  background: #d9dec8;
+}
+
+.bird-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 20px;
+  text-align: left;
+}
+
+.bird-details p {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+}
+
+.bird-details span,
+.ban-panel li span {
+  color: var(--olive);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bird-details strong {
+  color: var(--text-strong);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.attribute-button,
+.ban-panel button {
+  border: 1px solid #b9c3a2;
+  border-radius: 999px;
+  color: var(--forest);
+  background: #f6f1df;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.attribute-button {
+  width: fit-content;
+  max-width: 100%;
+  padding: 7px 12px;
+}
+
+.attribute-button:hover,
+.ban-panel button:hover {
+  background: #efe3bd;
+  border-color: var(--gold-dark);
+}
+
+.attribute-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ban-panel p,
+.empty-message {
+  margin: 0;
+  color: var(--muted);
+}
+
+.ban-panel ul {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ban-panel button {
+  display: grid;
+  width: 100%;
+  gap: 4px;
+  padding: 10px 12px;
+}
+
+.error-message {
+  margin: 0;
+  border: 1px solid #c7735b;
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: #7f2718;
+  background: #ffe0d6;
+  font-weight: 700;
+}
+
+.skeleton-card {
+  display: grid;
+  gap: 16px;
+}
+
+.loading-text {
+  margin: 0;
+  color: var(--forest);
+  font-weight: 800;
+}
+
+.skeleton-image,
+.skeleton-line {
+  border-radius: 16px;
+  background: linear-gradient(90deg, #dce4cf 0%, #eef3e4 45%, #dce4cf 90%);
+  background-size: 220% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+.skeleton-image {
+  height: min(54vw, 460px);
+  min-height: 320px;
+}
+
+.skeleton-line {
+  height: 22px;
+}
+
+.skeleton-line.long {
+  width: 80%;
+}
+
+.skeleton-line.short {
+  width: 45%;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 120% 0;
+  }
+
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    width: min(100% - 20px, 680px);
+    padding: 30px 0;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bird-details {
+    grid-template-columns: 1fr;
+  }
+
+  .bird-image {
+    height: 70vw;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    width: min(100% - 16px, 480px);
+    padding: 22px 0;
+  }
+
+  .app-header {
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .discover-button {
+    width: 100%;
+  }
+
+  .results-panel,
+  .ban-panel {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .bird-card {
+    border-radius: 16px;
+  }
+
+  .bird-details {
+    padding: 16px;
+  }
+}

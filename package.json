@@ -1,0 +1,10 @@
+{
+  "name": "veni-vici-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix Veni-Vici run dev",
+    "build": "npm --prefix Veni-Vici run build",
+    "lint": "npm --prefix Veni-Vici run lint",
+    "preview": "npm --prefix Veni-Vici run preview"
+  }
+}
