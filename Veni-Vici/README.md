@@ -1,44 +1,38 @@
-# Web Development Project 4 - *Name of App Here*
+# Web Development Project 4 - *Veni-Vici*
 
-Submitted by: **Your Name Here**
+Submitted by: **Shreya Pasupuleti**
 
-This web app: **insert description**
+This web app: **Feathered Friends discovers random bird observations from the iNaturalist API. Clicking "Discover a Bird" fetches a random page of research-grade, photographed bird observations and displays one at a time: common name, scientific name, location, observation date, observer, identification count, and photo. Common name, location, and observer are clickable — clicking adds them to a ban list, and future discoveries exclude any observation matching a banned species, location, or observer. Clicking a banned entry again removes it.**
 
-Time spent: **X** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed: 
 
-- [ ] **Application features a button that creates a new API fetch request on click and displays at least three attributes and an image obtained from the returned JSON data**
-  - The type of attribute displayed for each image should be consistent across API calls (i.e. if you are using a cat API, and display the color, breed, and age in response to an initial API call, subsequent button clicks should also result in the color, breed, and age being displayed)
-- [ ] **Only one item/data from API call response is viewable at a time and at least one image is displayed per API call**
-  - A single result of an API call is displayed at a time 
-  - Displayed attributes should match the displayed image (i.e., if showing a picture of a Siamese cat and the attribute breed, the displayed breed should be 'Siamese' not 'Ragdoll' or another breed that doesn't match)
-  - There is at least one image per API call
-- [ ] **API call response results should appear random to the user**
-  - Clicking on the API call button should generate a seemingly random new result each time
-  - Note: Repeat results are permitted but the API used should have a reasonably large amount of data and repeats should not be frequent
-- [ ] **Clicking on a displayed value for one attribute adds it to a displayed ban **list**
-  - At least one attribute for each API result should be clickable
-  - Clicking on a clickable attribute not on the ban list, should imnmediately add it to the ban list 
-  - Clicking on an attribute in the ban list should immediately remove it from the ban list 
-- [ ] **Attributes on the ban list prevent further images/API results with that attribute from being displayed**
-  - Clicking on the API call button should not result in any image/attributes with attribute values in the ban list being displayed (ex. Using a cat API, if the ban list includes the value 'Siberian' for the breed attribute, clicking on the Discover button should never result in a Siberian cat being displayed)
-  - Note: More attribute values on the ban list may result in a higher frequency of repeat results
-  -  [ ] _To ensure an accurate grade, your recording **must** show that when clicked, an attribute in the ban list is immediately removed from the list of banned attributes_
+- [x] **Application features a button that creates a new API fetch request on click and displays at least three attributes and an image obtained from the returned JSON data**
+  - Displays common name, scientific name, location, observation date, observer, and identification count alongside the photo on every click
+- [x] **Only one item/data from API call response is viewable at a time and at least one image is displayed per API call**
+  - Only the current bird is rendered; results without a photo are filtered out before selection
+- [x] **API call response results should appear random to the user**
+  - Each click fetches a random page (1–20) of 50 observations from iNaturalist, then shuffles and filters candidates client-side
+- [x] **Clicking on a displayed value for one attribute adds it to a displayed ban list**
+  - Common name, location, and observer are rendered as `<button>` elements; clicking a value not on the ban list adds it, clicking a value already on the ban list removes it
+- [x] **Attributes on the ban list prevent further images/API results with that attribute from being displayed**
+  - Candidates are filtered against the ban list before a new bird is selected; if every candidate is banned, an error message is shown instead
+  -  [x] _To ensure an accurate grade, your recording **must** show that when clicked, an attribute in the ban list is immediately removed from the list of banned attributes_
 
 
 The following **optional** features are implemented:
 
-- [ ] Multiple types of attributes are clickable and can be added to the ban list
+- [x] Multiple types of attributes are clickable and can be added to the ban list
+  - Species (common name), location, and observer are all bannable independently
 - [ ] Users can see a stored history of their previously displayed  results from this session
-  - A dedicated section of the application displays all the previous images/attributes seen before
-  - Each time the API call button is clicked, the history updates with the newest API result
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* The currently displayed bird stays visible after banning one of its own attributes (species/location/observer), rather than disappearing immediately
+* Ban list panel shows each entry's type and value, with a button to unban
 
 ## Video Walkthrough
 
@@ -55,11 +49,11 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+iNaturalist's `photos[0].url` returns a `square` thumbnail by default; swapped in `medium` for a larger display image. Not every research-grade observation has a photo or full attribute set, so candidates without an image are filtered out before a bird is selected, and ban-toggle buttons are disabled when the underlying attribute (e.g. observer) is missing.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2026] [Shreya Pasupuleti]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
